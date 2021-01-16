@@ -21,7 +21,6 @@ resource "aws_s3_bucket_object" "py_file" {
   key                    = "src/temp_conv.py"
   source                 = "${path.module}/../src/temp_conv.py"
   acl                    = "public-read"
-  content_type           = "text/plain"
   server_side_encryption = "AES256"
   etag                   = filemd5("${path.module}/../src/temp_conv.py")
 }
