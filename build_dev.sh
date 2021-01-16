@@ -2,7 +2,7 @@
 
 cd terraform/environment/non-prod
 terraform init
-teraform validate
+terraform validate
 if [ $? -eq 0 ]
     then 
     { 
