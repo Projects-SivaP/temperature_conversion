@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd terraform/environment/non-prod
+cd terraform/environments/non-prod
 terraform init
 terraform validate
 if [ $? -eq 0 ]
