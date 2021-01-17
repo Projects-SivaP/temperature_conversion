@@ -24,6 +24,10 @@
 # print ("Temperature Conversion is from", measurment_units[input_option], "to", measurment_units[target_option])
 ###
 
+###
+# Function to perform temperature_conversion
+###
+
 def temperature_conversion(target_unit, input_unit, input_temperature):
     ### Conversion Logic
     ## To Kelvin Conversion
@@ -63,16 +67,17 @@ def temperature_conversion(target_unit, input_unit, input_temperature):
 print ("\nInfo: Valid Temperature Units - Kelvin, Celsius, Fahrenheit and Rankine")
 print ("\nInputs")
 
+## Temp Variables to hold the iterations count and flag to hold the validity of inputs
 iterations = 0
 valid_flag = True
 
 ## Allowing Teacher to feed in the values
 input_temperature = input("Enter the Input Value of Temperature:\t\t")
 
-### Ensuring Input and Target Unit Of Measure is not Identical
 while iterations < 3:
     input_unit = input("Enter Input Unit Of Measure:\t\t\t")
     target_unit = input("Enter Target Unit Of Measure:\t\t\t")
+    # Ensuring Input and Target Unit Of Measure is not Identical
     if input_unit.casefold() == target_unit.casefold():
         iterations += 1
         print("Info: Both Input and Target Unit Type can not be Same. ** Attempts Left: ", 3-iterations)
@@ -98,7 +103,7 @@ if target_unit.casefold() not in ["kelvin", "celsius", "fahrenheit", "rankine"]:
     valid_flag = False
 
 if valid_flag == True:
-    ## Feeding Student Response and checking if it is valid value
+    ## Feeding Student Response and checking if it is valid value before proceeding to conversion logic
     try:
         student_response =  float(student_response)
     except ValueError:
@@ -109,6 +114,7 @@ else:
     print ("\nOutput - Invalid")
     exit()
 
+### Evaluation after rounded the responses to One Decimial or One-Tenths
 if round(expected_response, 1) == round(student_response, 1):
     print ("\nOutput - Correct")
 else:
