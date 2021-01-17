@@ -1,3 +1,4 @@
+### S3 Bucket to Hold Python File to perform Temperature Conversion
 resource "aws_s3_bucket" "devops_challange" {
   bucket = "${var.environment_name}-devops-challenge"
   acl    = "public-read"
@@ -13,9 +14,9 @@ resource "aws_s3_bucket" "devops_challange" {
       }
     }
   }
-
 }
 
+### Uploading the python file to S3. etag will track the file updates. 
 resource "aws_s3_bucket_object" "py_file" {
   bucket                 = aws_s3_bucket.devops_challange.id
   key                    = "src/temp_conv.py"
@@ -24,4 +25,3 @@ resource "aws_s3_bucket_object" "py_file" {
   server_side_encryption = "AES256"
   etag                   = filemd5("${path.module}/../src/temp_conv.py")
 }
-
